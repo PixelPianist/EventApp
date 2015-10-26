@@ -1,4 +1,4 @@
-package com.mycompany.mikesapplication;
+package com.eventappucsd.activity;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

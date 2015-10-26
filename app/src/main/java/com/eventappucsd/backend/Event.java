@@ -1,4 +1,4 @@
-package com.mycompany.mikesapplication;
+package com.eventappucsd.backend;
 
 import java.util.GregorianCalendar;
 
