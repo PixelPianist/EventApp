@@ -1,9 +1,10 @@
 
-
-
+EventApp.iml
+.iml
 *.iml
 .idea
 .gradle
+/build.gradle
 
 
 
