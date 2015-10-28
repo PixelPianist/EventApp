@@ -1,5 +1,6 @@
 package com.eventappucsd.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "I am a walrus", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                addEvent(view);
             }
         });
     }
@@ -48,5 +48,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Called when the user clicks the Add Event button
+     *
+     * @param view The view that was clicked
+     */
+    public void addEvent(View view) {
+        Intent intent = new Intent(this, EnterEventInfoActivity.class);
+        startActivity(intent);
     }
 }
