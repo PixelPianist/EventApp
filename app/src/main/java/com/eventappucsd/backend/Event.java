@@ -10,6 +10,7 @@ public class Event {
     private String description;
     private String location; // is this the best way to do this?
     private Date date; //can be constructed with three ints - month, date, year
+    private String time;
     private int numVotes;
 
     public Event() {
@@ -17,6 +18,7 @@ public class Event {
         this.description = "";
         this.location = "";
         this.date = new Date();
+        this.time = "";
     }
 
     public void setEventName(String eventName) {
@@ -32,6 +34,10 @@ public class Event {
     }
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getEventName() {
@@ -50,6 +56,10 @@ public class Event {
         return this.date;
     }
 
+    public String getTime() {
+        return this.time;
+    }
+
     public int getNumVotes() {
         return this.numVotes;
     }
@@ -61,6 +71,7 @@ public class Event {
     public String toString() {
         return "Event name is: " + this.eventName +
                 "\nDate is: " + this.date.toString() +
+                "\nTime is: " + this.getTime() +
                 "\nLocation is: " + this.getLocation() +
                 "\nDescription is: " + this.getDescription();
     }
