@@ -10,49 +10,74 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:hint="Event Name"
+        android:id="@+id/editTextEventName"
+        android:hint="@string/name_hint"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp" />
+        android:layout_marginTop="80dp"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="date"
-        android:hint="Date"
+        android:hint="@string/date_hint"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/editTextDate"
+        android:layout_below="@+id/editTextEventName"
+        android:layout_centerHorizontal="true"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
-        android:hint="Time"
+        android:hint="@string/time_hint"
         android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:id="@+id/editTextTime"
+        android:layout_below="@+id/editTextDate"
+        android:layout_alignStart="@+id/editTextDate"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
-        android:hint="Location"
+        android:id="@+id/editTextLocation"
+        android:hint="@string/location_hint"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:hint="Description"
-        android:id="@+id/editText5"
-        android:layout_below="@+id/editText4"
-        android:layout_centerHorizontal="true" />
+        android:hint="@string/description_hint"
+        android:id="@+id/editTextDescription"
+        android:layout_below="@+id/editTextLocation"
+        android:layout_centerHorizontal="true"
+        android:imeOptions="actionDone"
+        />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Event"
+        android:id="@+id/button"
+        android:layout_below="@+id/editTextDescription"
+        android:layout_marginTop="40dp"
+        android:background="#3850d7"
+        android:onClick="addEventToDatabase"
+        android:layout_alignEnd="@+id/editTextLocation" />
 
 </RelativeLayout>

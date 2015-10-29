@@ -1,29 +1,41 @@
 package com.eventappucsd.backend;
 
-import java.util.GregorianCalendar;
-
 /**
  * Created by Rachel on 10/22/2015.
  * A class to represent a single event that can be added and viewed by users.
  */
 
 public class Event {
-    private String event_name;
+    private String eventName;
     private String description;
     private String location; // is this the best way to do this?
-    private GregorianCalendar date; //can be constructed with three ints - month, date, year
+    private Date date; //can be constructed with three ints - month, date, year
     private int numVotes;
 
-    public Event(String event_name, String description, String location, GregorianCalendar date) {
-        this.event_name = event_name;
+    public Event() {
+        this.eventName = "";
+        this.description = "";
+        this.location = "";
+        this.date = new Date();
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setLocation(String location) {
         this.location = location;
+    }
+    public void setDate(Date date) {
         this.date = date;
-        this.numVotes = 0;
     }
 
     public String getEventName() {
-        return this.event_name;
+        return this.eventName;
     }
 
     public String getDescription() {
@@ -34,7 +46,7 @@ public class Event {
         return this.location;
     }
 
-    public GregorianCalendar getDate() {
+    public Date getDate() {
         return this.date;
     }
 
@@ -44,6 +56,13 @@ public class Event {
 
     public void incrementNumVotes() {
         this.numVotes++;
+    }
+
+    public String toString() {
+        return "Event name is: " + this.eventName +
+                "\nDate is: " + this.date.toString() +
+                "\nLocation is: " + this.getLocation() +
+                "\nDescription is: " + this.getDescription();
     }
 
 }
