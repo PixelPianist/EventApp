@@ -1,11 +1,14 @@
 package com.eventappucsd.backend;
 
+import java.util.ArrayList;
+
 /**
  * Created by Rachel on 10/22/2015.
  * A class to represent a single event that can be added and viewed by users.
  */
 
 public class Event {
+
     private String eventName;
     private String description;
     private String location; // is this the best way to do this?
@@ -70,10 +73,10 @@ public class Event {
 
     public String toString() {
         return "Event name is: " + this.eventName +
-                "\nDate is: " + this.date.toString() +
-                "\nTime is: " + this.getTime() +
-                "\nLocation is: " + this.getLocation() +
-                "\nDescription is: " + this.getDescription();
+                " Date is: " + this.date.toString() +
+                " Time is: " + this.getTime() +
+                " Location is: " + this.getLocation() +
+                " Description is: " + this.getDescription() + "\n";
     }
 
 }
