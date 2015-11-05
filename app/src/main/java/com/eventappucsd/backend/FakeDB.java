@@ -15,9 +15,7 @@ public class FakeDB extends MainActivity {
     static int dbSize = 0;
 
     public static void add(Event currentEvent){
-
         eventCheat.add(currentEvent);
-
     }
 
     public static void printEvent(int index){

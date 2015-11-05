@@ -23,6 +23,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public ArrayList<String> list = new ArrayList<>();
+    StableArrayAdapter adapter;
+    private ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,26 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        list.add("Hackathon \n11/10/15");
-        list.add("Super Awesome UCSD Party 1\n11/11/15");
-        list.add("Sun God or whatever its called... 1\n11/20/15");
-        list.add("Free Thanksgiving food\n11/26/15");
-        list.add("Super Awesome UCSD Party 2\n11/10/15");
-        list.add("Super Awesome UCSD Party 3\n11/10/15");
-        list.add("Pre-finals bi*$h fest\n12/01/15");
-        list.add("Super Awesome UCSD Party 4\n12/10/15");
-        list.add("Super Awesome UCSD Party 5\n12/11/15");
-        list.add("Super Awesome UCSD Party 6\n12/12/15");
-        list.add("Super Awesome UCSD Party 7\n12/13/15");
-        list.add("HO HO HO MEEEERY CHRISTMAS!\n12/25/15");
-        list.add("Happy New Years!!!!!\n01/01/16");
-
-
         /** Code used to implement list **/
-        final ListView listview = (ListView) findViewById(R.id.event_list);
-
-        StableArrayAdapter adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-
+        listview = (ListView) findViewById(R.id.event_list);
+        adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -100,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
     public void addEvent(View view) {
         Intent intent = new Intent(this, EnterEventInfoActivity.class);
         startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            list.add(data.getStringExtra("event"));
+            listview = (ListView) findViewById(R.id.event_list);
+            adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+            listview.setAdapter(adapter);
+        }
     }
 
     public class StableArrayAdapter extends ArrayAdapter<String> {
