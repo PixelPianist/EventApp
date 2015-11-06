@@ -26,4 +26,15 @@ public class FakeDB extends MainActivity {
     public static String getEventName(int index){
         return eventCheat.get(index).getEventName();
     }
+
+    public static Event getEvent(int position){
+        if(position < eventCheat.size() && position >= 0){
+            return eventCheat.get(position);
+        }
+        else{
+            System.err.println(Debug.CRITICAL_ERROR + "position queried from FakeDB is out "
+                + "of scope!");
+            return null;
+        }
+    }
 }

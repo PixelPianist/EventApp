@@ -1,5 +1,6 @@
 package com.eventappucsd.backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,8 +8,22 @@ import java.util.ArrayList;
  * A class to represent a single event that can be added and viewed by users.
  */
 
-public class Event {
+public class Event{
+    /*
+     * Named Constants
+     */
+    public static final String ID_NAME = "eventName";
+    public static final String ID_DESCRIPTION = "description";
+    public static final String ID_LOCATION = "location";
+    public static final String ID_DATE_MONTH = "date.month";
+    public static final String ID_DATE_DAY = "date.day";
+    public static final String ID_DATE_YEAR = "date.year";
+    public static final String ID_TIME = "time";
+    public static final String ID_NUM_VOTES = "numVotes";
 
+    /*
+     * Instance Variables
+     */
     private String eventName;
     private String description;
     private String location; // is this the best way to do this?

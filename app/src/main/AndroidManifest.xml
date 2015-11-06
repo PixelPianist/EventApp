@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".EnterEventInfoActivity" >
         </activity>
+        <activity android:name=".ViewEventActivity" >
+        </activity>
     </application>
 
 </manifest>

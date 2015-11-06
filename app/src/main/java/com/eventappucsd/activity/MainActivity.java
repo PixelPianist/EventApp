@@ -42,8 +42,16 @@ public class MainActivity extends AppCompatActivity {
         adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.err.println("Clicking Item at position: " + position);
+                viewEvent(view, FakeDB.getEvent(position));
+            }
+        });
 
+        // Action button to add events
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -85,6 +93,20 @@ public class MainActivity extends AppCompatActivity {
     public void addEvent(View view) {
         Intent intent = new Intent(this, EnterEventInfoActivity.class);
         startActivityForResult(intent, 1);
+    }
+
+    public void viewEvent(View view, Event event){
+        Intent intent = new Intent(this, ViewEventActivity.class);
+        // Add all the Strings necessary for displaying the event's info
+        intent.putExtra(Event.ID_NAME, event.getEventName());
+        intent.putExtra(Event.ID_DESCRIPTION, event.getDescription());
+        intent.putExtra(Event.ID_LOCATION, event.getLocation());
+        intent.putExtra(Event.ID_TIME, event.getTime());
+        intent.putExtra(Event.ID_DATE_DAY, event.getDate().getDay());
+        intent.putExtra(Event.ID_DATE_MONTH, event.getDate().getMonth());
+        intent.putExtra(Event.ID_DATE_YEAR, event.getDate().getYear());
+        intent.putExtra(Event.ID_NUM_VOTES, event.getNumVotes());
+        startActivity(intent);
     }
 
     @Override
