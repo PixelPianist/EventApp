@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+
+    <TextView
+        android:id="@+id/eventItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnUpvoteEvent"
+        android:layout_alignTop="@+id/btnUpvoteEvent"
+        android:layout_toLeftOf="@+id/numUpvotes"
+        android:gravity="left"
+        android:text="Item"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnUpvoteEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Upvote" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/numUpvotes"
+        android:layout_alignBottom="@+id/eventItem"
+        android:layout_alignEnd="@+id/btnUpvoteEvent" />
+
+</RelativeLayout>
