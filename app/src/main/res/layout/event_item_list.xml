@@ -3,35 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="5dp" >
+    android:paddingLeft="10dp">
 
 
     <TextView
-        android:id="@+id/eventItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnUpvoteEvent"
-        android:layout_alignTop="@+id/btnUpvoteEvent"
-        android:layout_toLeftOf="@+id/numUpvotes"
-        android:gravity="left"
-        android:text="Item"
-        android:textSize="16dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnUpvoteEvent"
+        android:id="@+id/itemName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="Upvote" />
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/numUpvotes"
-        android:layout_alignBottom="@+id/eventItem"
-        android:layout_alignEnd="@+id/btnUpvoteEvent" />
 
+
+    <ImageButton android:id="@+id/upbtn"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:background="@drawable/peanut_btn_bw"
+        android:text="ABBB"
+        android:clickable="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentRight="false"
+        android:cropToPadding="false"
+        android:layout_marginTop="-10dp" />
 </RelativeLayout>
