@@ -46,7 +46,7 @@ public class EnterEventInfoActivity extends AppCompatActivity {
 
         FakeDB.add(currentEvent);
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("event", currentEvent.getEventName()      + "\n\n" +
+        intent.putExtra("event", currentEvent.getEventName()      + "\n" +
                                  "@ " + currentEvent.getTime()    + " on " +
                                  currentEvent.getDate() + "\n" + "Place: " +
                                  currentEvent.getLocation());

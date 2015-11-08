@@ -6,11 +6,18 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.LayoutInflater;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ListView;
 
 import com.eventappucsd.backend.Event;
@@ -46,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 System.err.println("Clicking Item at position: " + position);
+                adapter.getView(position, view, parent);
                 viewEvent(view, FakeDB.getEvent(position));
+
             }
         });
 
@@ -143,6 +152,27 @@ public class MainActivity extends AppCompatActivity {
         public boolean hasStableIds() {
             return true;
         }
+
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+            // Get the data item for this position
+            String item = getItem(position);
+
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null)
+            {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_item_list, parent, false);
+            }
+            // Lookup view for data population
+            TextView itemName = (TextView) convertView.findViewById(R.id.itemName);
+
+            // Populate the data into the template view using the data object
+            itemName.setText(item);
+
+            // Return the completed view to render on screen
+            return convertView;
+        }
+
 
     }
 }
