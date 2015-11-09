@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.eventappucsd.backend.Event;
 import com.eventappucsd.backend.FakeDB;
@@ -170,11 +171,25 @@ public class MainActivity extends AppCompatActivity {
             // Populate the data into the template view using the data object
             itemName.setText(item);
 
-            ImageButton imageButton = (ImageButton) convertView.findViewById(R.id.upbtn);
-            imageButton.setFocusable(false);
-            imageButton.setFocusableInTouchMode(false);
-            imageButton.setClickable(true);
-            
+            ImageButton upvoteButton = (ImageButton) convertView.findViewById(R.id.upbtn);
+            // Needed in order to have both the button and the list item clickable
+            upvoteButton.setFocusable(false);
+            upvoteButton.setFocusableInTouchMode(false);
+            upvoteButton.setClickable(true);
+
+            // Store the event's position in the tag to be used when it's clicked.
+            upvoteButton.setTag(position);
+            upvoteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Event event = FakeDB.getEvent((Integer) view.getTag()); // gets position stored
+                    //TODO: Make it so that one phone can only upvote an event once.
+                    event.incrementNumVotes();
+                    Toast.makeText(getContext(), "Event pos: " + view.getTag() + " num votes: " + event.getNumVotes(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
             // Return the completed view to render on screen
             return convertView;
         }
