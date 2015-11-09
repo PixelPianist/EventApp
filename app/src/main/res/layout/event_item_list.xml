@@ -24,6 +24,5 @@
         android:layout_alignParentBottom="false"
         android:layout_alignWithParentIfMissing="false"
         android:layout_alignParentRight="false"
-        android:cropToPadding="false"
-        android:layout_marginTop="-10dp" />
+        android:cropToPadding="false" />
 </RelativeLayout>
