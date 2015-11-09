@@ -2,6 +2,7 @@ package com.eventappucsd.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -158,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
             }
             // Lookup view for data population
             TextView itemName = (TextView) convertView.findViewById(R.id.itemName);
+            itemName.setTextColor(Color.WHITE);
 
             // Populate the data into the template view using the data object
             itemName.setText(item);
