@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ListView;
 
@@ -169,6 +170,11 @@ public class MainActivity extends AppCompatActivity {
             // Populate the data into the template view using the data object
             itemName.setText(item);
 
+            ImageButton imageButton = (ImageButton) convertView.findViewById(R.id.upbtn);
+            imageButton.setFocusable(false);
+            imageButton.setFocusableInTouchMode(false);
+            imageButton.setClickable(true);
+            
             // Return the completed view to render on screen
             return convertView;
         }

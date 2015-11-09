@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:divider="@color/colorPrimaryDark"
         android:background="@color/listBackground"
+        android:descendantFocusability="blocksDescendants"
         android:dividerHeight="2dp">
 
     </ListView>

@@ -17,6 +17,8 @@
         android:layout_width="80dp"
         android:layout_height="70dp"
         android:background="@drawable/peanut_btn_bw"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:text="ABBB"
         android:clickable="true"
         android:layout_alignParentTop="true"
