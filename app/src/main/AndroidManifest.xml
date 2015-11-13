@@ -23,11 +23,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".EnterEventInfoActivity" >
-        </activity>
+        <!--<activity android:name=".EnterEventInfoActivity" >-->
+        <!--</activity>-->
 
-        <activity android:name=".ViewEventActivity" >
-        </activity>
+        <!--<activity android:name=".ViewEventActivity" >-->
+        <!--</activity>-->
         <provider android:name="com.eventappucsd.backend.EventsProvider"
             android:authorities="com.eventappucsd.backend.provider"
             android:exported="true"

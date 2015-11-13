@@ -12,6 +12,7 @@ public class Event{
     /*
      * Named Constants
      */
+
     public static final String ID_NAME = "eventName";
     public static final String ID_DESCRIPTION = "description";
     public static final String ID_LOCATION = "location";
@@ -24,6 +25,7 @@ public class Event{
     /*
      * Instance Variables
      */
+    private int _id;
     private String eventName;
     private String description;
     private String location; // is this the best way to do this?
@@ -31,12 +33,31 @@ public class Event{
     private String time;
     private int numVotes;
 
-    public Event() {
+//    public Event() {
+//        this._id = '';
+//        this.eventName = "";
+//        this.description = "";
+//        this.location = "";
+//        this.date = new Date();
+//        this.time = "";
+//    }
+
+    public Event(int _id, String eventName, String description, String location,
+                 String date, String time, int numVotes){
+        this._id = _id;
         this.eventName = "";
         this.description = "";
         this.location = "";
         this.date = new Date();
         this.time = "";
+
+    }
+
+    public int get_id(){
+        return _id;
+    }
+    public void setId(int _id){
+        this._id = _id;
     }
 
     public void setEventName(String eventName) {
@@ -92,7 +113,8 @@ public class Event{
                 " Date is: " + this.date.toString() +
                 " Time is: " + this.getTime() +
                 " Location is: " + this.getLocation() +
-                " Description is: " + this.getDescription() + "\n";
+                " Description is: " + this.getDescription() +
+                " id is: " + this.get_id() + "\n";
     }
 
 }
