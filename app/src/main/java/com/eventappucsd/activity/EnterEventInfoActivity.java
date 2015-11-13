@@ -53,4 +53,11 @@ public class EnterEventInfoActivity extends AppCompatActivity {
         setResult(1, intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        setResult(0, intent);
+        finish();
+    }
 }

@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
 
         /** Code used to implement list **/
@@ -57,21 +54,16 @@ public class MainActivity extends AppCompatActivity {
                 System.err.println("Clicking Item at position: " + position);
                 adapter.getView(position, view, parent);
                 viewEvent(view, FakeDB.getEvent(position));
-
             }
         });
-
         // Action button to add events
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 addEvent(view);
             }
-
         });
-
     }
 
     @Override
@@ -92,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -122,23 +113,25 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
+        if (resultCode == 1) {
             list.add(data.getStringExtra("event"));
             listview = (ListView) findViewById(R.id.event_list);
             adapter = new StableArrayAdapter(this, android.R.layout.simple_list_item_1, list);
             listview.setAdapter(adapter);
+        }
+        else{
+            //do nothing
+            System.out.println("Back button pressed on add event");
         }
     }
 
     public class StableArrayAdapter extends ArrayAdapter<String> {
 
         HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
         public StableArrayAdapter(Context context, int textViewResourceId,
                                   List<String> objects) {
 
             super(context, textViewResourceId, objects);
-
             for (int i = 0; i < objects.size(); ++i) {
                 mIdMap.put(objects.get(i), i);
             }
@@ -155,14 +148,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
             String item = getItem(position);
 
             // Check if an existing view is being reused, otherwise inflate the view
-            if (convertView == null)
-            {
+            if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_item_list, parent, false);
             }
             // Lookup view for data population
@@ -189,11 +180,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             });
-
             // Return the completed view to render on screen
             return convertView;
         }
-
-
     }
 }

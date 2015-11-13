@@ -50,6 +50,7 @@ public class Event{
     public void setLocation(String location) {
         this.location = location;
     }
+
     public void setDate(Date date) {
         this.date = date;
     }
