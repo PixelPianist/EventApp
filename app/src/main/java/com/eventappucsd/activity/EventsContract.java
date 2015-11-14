@@ -1,4 +1,4 @@
-package com.eventappucsd.backend;
+package com.eventappucsd.activity;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -17,7 +17,7 @@ public class EventsContract {
         String EVENTS_NUM_VOTES = "num_votes";
     }
 
-    public static final String CONTENT_AUTHORITY = "com.eventappucsd.backend.provider";
+    public static final String CONTENT_AUTHORITY = "com.eventappucsd.activity.provider";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     private static final String PATH_EVENTS = "events";

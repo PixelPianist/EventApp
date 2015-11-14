@@ -2,20 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.eventappucsd.activity" >
 
-    <permission android:name="com.eventappucsd.backend.provider.READWRITE"/>
+    <permission android:name="com.eventappucsd.activity.provider.READWRITE"/>
 
-    <uses-permission android:name="com.eventappucsd.backend.provider.READWRITE"/>
+    <uses-permission android:name="com.eventappucsd.activity.provider.READWRITE"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.WithActionBar">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,16 +22,16 @@
             </intent-filter>
         </activity>
 
-        <!--<activity android:name=".EnterEventInfoActivity" >-->
-        <!--</activity>-->
+        <activity android:name=".EnterEventInfoActivity" >
+        </activity>
 
         <!--<activity android:name=".ViewEventActivity" >-->
         <!--</activity>-->
-        <provider android:name="com.eventappucsd.backend.EventsProvider"
-            android:authorities="com.eventappucsd.backend.provider"
+        <provider android:name=".EventsProvider"
+            android:authorities="com.eventappucsd.activity.provider"
             android:exported="true"
-            android:readPermission="com.eventappucsd.backend.provider.READWRITE"
-            android:writePermission="com.eventappucsd.backend.provider.READWRITE"/>
+            android:readPermission="com.eventappucsd.activity.provider.READWRITE"
+            android:writePermission="com.eventappucsd.activity.provider.READWRITE"/>
     </application>
 
 </manifest>

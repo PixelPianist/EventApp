@@ -18,25 +18,20 @@
         <TextView
             android:id="@+id/event_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-            <!--android:textColor="@color/event_name"-->
-            <!--android:textSize="@dimen/event_name"/>-->
-
+            android:layout_height="wrap_content"
+            android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/event_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-            <!--android:textColor="@color/event_name"-->
-            <!--android:textSize="@dimen/event_name"/>-->
+            android:layout_height="wrap_content"
+            android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/event_location"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"/>
-            <!--android:textColor="@color/friend_phone"-->
-
+            android:textSize="15dp"/>
 
     </LinearLayout>
 

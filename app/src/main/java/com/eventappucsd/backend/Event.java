@@ -12,7 +12,6 @@ public class Event{
     /*
      * Named Constants
      */
-
     public static final String ID_NAME = "eventName";
     public static final String ID_DESCRIPTION = "description";
     public static final String ID_LOCATION = "location";
@@ -29,7 +28,8 @@ public class Event{
     private String eventName;
     private String description;
     private String location; // is this the best way to do this?
-    private Date date; //can be constructed with three ints - month, date, year
+    private String date; //can be constructed with three ints - month, date, year
+    //private Date date   TODO refactor date formatting
     private String time;
     private int numVotes;
 
@@ -45,20 +45,16 @@ public class Event{
     public Event(int _id, String eventName, String description, String location,
                  String date, String time, int numVotes){
         this._id = _id;
-        this.eventName = "";
-        this.description = "";
-        this.location = "";
-        this.date = new Date();
-        this.time = "";
+        this.eventName = eventName;
+        this.description = description;
+        this.location = location;
+        this.date = date;
+        //this.date = new Date();
+        this.time = time;
+        this.numVotes = numVotes;
 
     }
-
-    public int get_id(){
-        return _id;
-    }
-    public void setId(int _id){
-        this._id = _id;
-    }
+    public void setId(int _id){ this._id = _id; }
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
@@ -72,13 +68,13 @@ public class Event{
         this.location = location;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    public void setDate(String date) { this.date = date;}
 
     public void setTime(String time) {
         this.time = time;
     }
+
+    public int getId(){ return _id; }
 
     public String getEventName() {
         return this.eventName;
@@ -88,17 +84,13 @@ public class Event{
         return this.description;
     }
 
-    public String getLocation() {
-        return this.location;
-    }
-
-    public Date getDate() {
-        return this.date;
-    }
+    public String getDate() { return this.date; }
 
     public String getTime() {
         return this.time;
     }
+
+    public String getLocation() { return this.location;}
 
     public int getNumVotes() {
         return this.numVotes;
@@ -107,14 +99,14 @@ public class Event{
     public void incrementNumVotes() {
         this.numVotes++;
     }
-
-    public String toString() {
-        return "Event name is: " + this.eventName +
-                " Date is: " + this.date.toString() +
-                " Time is: " + this.getTime() +
-                " Location is: " + this.getLocation() +
-                " Description is: " + this.getDescription() +
-                " id is: " + this.get_id() + "\n";
-    }
-
 }
+//    public String toString() {
+//        return "Event name is: " + this.eventName +
+//                " Date is: " + this.date.toString() +
+//                " Time is: " + this.getTime() +
+//                " Location is: " + this.getLocation() +
+//                " Description is: " + this.getDescription() +
+//                " id is: " + this.get_id() + "\n";
+//    }
+
+

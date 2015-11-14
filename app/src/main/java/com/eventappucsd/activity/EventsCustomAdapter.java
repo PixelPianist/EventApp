@@ -1,4 +1,4 @@
-package com.eventappucsd.backend;
+package com.eventappucsd.activity;
 
 
 import android.content.Context;
@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.eventappucsd.backend.Date;
+import com.eventappucsd.backend.Event;
 
 import java.util.List;
 
@@ -28,7 +32,6 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         sFragmentManager = fragmentManager;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final View view;
@@ -38,20 +41,17 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         } else {
             view = convertView;
         }
-
         final Event event = getItem(position);
-        final int _id = event.get_id();
+        //final int _id = event.getId();
         final String name = event.getEventName();
-        final Date date = event.getDate();
+        final String date = event.getDate();
         final String location = event.getLocation();
 
         ((TextView) view.findViewById(R.id.event_name)).setText(name);
-        ((TextView) view.findViewById(R.id.event_date)).setDate(date);
+        ((TextView) view.findViewById(R.id.event_date)).setText(date);
         ((TextView) view.findViewById(R.id.event_location)).setText(location);
-
         return view;    
     }
-
     public void setData(List<Event> events){
         clear();
         if(events != null){

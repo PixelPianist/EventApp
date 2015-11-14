@@ -73,11 +73,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Event"
-        android:id="@+id/button"
+        android:id="@+id/addRecord"
         android:layout_below="@+id/editTextDescription"
         android:layout_marginTop="40dp"
         android:background="#3850d7"
-        android:onClick="addEventToDatabase"
-        android:layout_alignEnd="@+id/editTextLocation" />
+        android:layout_alignEnd="@+id/editTextLocation"/>
+        <!--android:onClick="addEventToDatabase"-->
+
 
 </RelativeLayout>

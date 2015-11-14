@@ -1,9 +1,11 @@
-package com.eventappucsd.backend;
+package com.eventappucsd.activity;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+
+import com.eventappucsd.activity.EventsContract;
 
 /**
  * Created by Scott on 11/10/15.
@@ -11,7 +13,6 @@ import android.provider.BaseColumns;
 public class EventsDatabase extends SQLiteOpenHelper {
 
     //private static final String TAG = FriendsDatabase.class.getSimpleName();
-
     //name of the db
     private static final String DATABASE_NAME = "events.db";
     //for upgrades
@@ -26,7 +27,6 @@ public class EventsDatabase extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mContext = context;
     }
-
     /*
     must implement abstract methods from SQLiteDatabase and SQLiteOpenHelper
      */
@@ -34,7 +34,6 @@ public class EventsDatabase extends SQLiteOpenHelper {
     /*
     OnCreate will create the db
      */
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + Tables.EVENTS + " ("
@@ -46,7 +45,6 @@ public class EventsDatabase extends SQLiteOpenHelper {
         + EventsContract.EventsColumns.EVENTS_TIME + " TEXT NOT NULL,"
         + EventsContract.EventsColumns.EVENTS_NUM_VOTES + " TEXT NOT NULL)");
     }
-
     /*
     OnUpgrade will handle if the DB is already setup
     Since Android devices enable a user to go into the settings and clear all data at any time
@@ -67,7 +65,6 @@ public class EventsDatabase extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + Tables.EVENTS);
             onCreate(db);
         }
-
     }
     /*
     deleteDatabase method will delete the database

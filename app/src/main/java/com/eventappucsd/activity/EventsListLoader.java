@@ -1,4 +1,4 @@
-package com.eventappucsd.backend;
+package com.eventappucsd.activity;
 
 
 import android.content.ContentResolver;
@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
+
+import com.eventappucsd.backend.Event;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,6 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         super(context);
         mContentResolver = contentResolver;
     }
-
     @Override
     public List<Event> loadInBackground() {
         String[]projection = {
@@ -53,8 +54,9 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
                     String date = mCursor.getString(mCursor.getColumnIndex(EventsContract.EventsColumns.EVENTS_DATE));
                     String time = mCursor.getString(mCursor.getColumnIndex(EventsContract.EventsColumns.EVENTS_TIME));
                     String location = mCursor.getString(mCursor.getColumnIndex(EventsContract.EventsColumns.EVENTS_LOCATION));
-                    String votes = mCursor.getString(mCursor.getColumnIndex(EventsContract.EventsColumns.EVENTS_NUM_VOTES));
-
+                    int numVotes = mCursor.getInt(mCursor.getColumnIndex(EventsContract.EventsColumns.EVENTS_NUM_VOTES));
+                    Event event = new Event(_id, name, description, date, time, location, numVotes);
+                    entries.add(event);
                 }while(mCursor.moveToNext()); //increment the cursor to the next position
             }
         }

@@ -7,6 +7,10 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 
+import com.eventappucsd.activity.EventsContract;
+import com.eventappucsd.activity.EventsCustomAdapter;
+import com.eventappucsd.activity.EventsListLoader;
+
 import java.util.List;
 
 /**
@@ -28,13 +32,13 @@ public class EventsListFragment extends ListFragment implements LoaderManager.Lo
         //this will put together the fragments on the screen
         mAdapter = new EventsCustomAdapter(getActivity(),getChildFragmentManager());
         //default for an empty list
-        setEmptyText("No friends");
+        setEmptyText("No Events");
+
         setListAdapter(mAdapter);
         setListShown(false);
         //use this class to send us the results
         getLoaderManager().initLoader(LOADER_ID, null, this);
     }
-
     @Override
     public Loader<List<Event>> onCreateLoader(int id, Bundle args) {
         mContentResolver = getActivity().getContentResolver();
@@ -51,7 +55,6 @@ public class EventsListFragment extends ListFragment implements LoaderManager.Lo
             setListShownNoAnimation(true);
         }
     }
-
     @Override
     public void onLoaderReset(Loader<List<Event>> loader) {
         mAdapter.setData(null);
