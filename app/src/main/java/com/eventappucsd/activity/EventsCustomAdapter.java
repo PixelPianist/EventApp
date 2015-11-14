@@ -19,7 +19,7 @@ import com.eventappucsd.backend.Event;
 import java.util.List;
 
 /**
- * Created by user1 on 11/13/15.
+ * Created by Scott on 11/13/15.
  */
 public class EventsCustomAdapter extends ArrayAdapter<Event> {
 

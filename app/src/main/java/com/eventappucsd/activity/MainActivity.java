@@ -1,3 +1,55 @@
+package com.eventappucsd.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import com.eventappucsd.backend.EventsListFragment;
+
+//import com.eventappucsd.backend.EventsListFragment;
+
+/**
+ * Created by Scott on 11/13/15.
+ */
+public class MainActivity extends FragmentActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if(fragmentManager.findFragmentById(android.R.id.content) == null){
+            EventsListFragment eventsListFragment = new EventsListFragment();
+            fragmentManager.beginTransaction().add(android.R.id.content, eventsListFragment).commit();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, as long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch(item.getItemId()){
+            case R.id.addRecord:
+                Intent intent = new Intent(MainActivity.this, EnterEventInfoActivity.class);
+                startActivity(intent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
 //package com.eventappucsd.activity;
 //
 //import android.content.Context;
@@ -185,54 +237,3 @@
 //        }
 //    }
 //}
-package com.eventappucsd.activity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
-import com.eventappucsd.backend.EventsListFragment;
-
-//import com.eventappucsd.backend.EventsListFragment;
-
-/**
- * Created by Scott on 11/13/15.
- */
-public class MainActivity extends FragmentActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        if(fragmentManager.findFragmentById(android.R.id.content) == null){
-            EventsListFragment eventsListFragment = new EventsListFragment();
-            fragmentManager.beginTransaction().add(android.R.id.content, eventsListFragment).commit();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, as long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch(item.getItemId()){
-            case R.id.addRecord:
-            Intent intent = new Intent(MainActivity.this, EnterEventInfoActivity.class);
-            startActivity(intent);
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
