@@ -1,6 +1,7 @@
 package com.eventappucsd.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -45,7 +46,6 @@ public class MainActivity extends FragmentActivity {
                 startActivity(intent);
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
