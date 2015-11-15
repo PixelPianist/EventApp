@@ -31,6 +31,7 @@ public class EventsListFragment extends ListFragment implements LoaderManager.Lo
         mContentResolver = getActivity().getContentResolver();
         //this will put together the fragments on the screen
         mAdapter = new EventsCustomAdapter(getActivity(),getChildFragmentManager());
+
         //default for an empty list
         setEmptyText("No Events");
 
@@ -38,6 +39,7 @@ public class EventsListFragment extends ListFragment implements LoaderManager.Lo
         setListShown(false);
         //use this class to send us the results
         getLoaderManager().initLoader(LOADER_ID, null, this);
+
     }
     @Override
     public Loader<List<Event>> onCreateLoader(int id, Bundle args) {
@@ -54,6 +56,7 @@ public class EventsListFragment extends ListFragment implements LoaderManager.Lo
         }else{
             setListShownNoAnimation(true);
         }
+
     }
     @Override
     public void onLoaderReset(Loader<List<Event>> loader) {

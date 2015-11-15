@@ -5,21 +5,26 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.eventappucsd.backend.EventsListFragment;
 
-//import com.eventappucsd.backend.EventsListFragment;
-
 /**
  * Created by Scott on 11/13/15.
  */
 public class MainActivity extends FragmentActivity {
 
+    /*
+    Fragment manager used for launching fragment activities.
+    Use this for launching new fragments
+    TODO viewEvent, peanutButton
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         FragmentManager fragmentManager = getSupportFragmentManager();
         if(fragmentManager.findFragmentById(android.R.id.content) == null){
@@ -28,6 +33,9 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    /*
+    launch the menu layout menu_main
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -35,6 +43,11 @@ public class MainActivity extends FragmentActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /*
+    adding the event button is implemented from here, implement other
+    option buttons from here.
+    TODO trending button (sorting list views)
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eventappucsd.backend.Date;
 import com.eventappucsd.backend.Event;
@@ -50,7 +51,21 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         ((TextView) view.findViewById(R.id.event_name)).setText(name);
         ((TextView) view.findViewById(R.id.event_date)).setText(date);
         ((TextView) view.findViewById(R.id.event_location)).setText(location);
-        return view;    
+
+        /*
+        make the event clickable and transition into the ViewActivity
+         */
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO ViewActivity from the DB
+                //Toast.makeText(getContext(), "click", Toast.LENGTH_SHORT).show();
+                Intent eventView = new Intent(getContext(), ViewEventActivity.class);
+                getContext().startActivity(eventView);
+            }
+        });
+
+        return view;
     }
     public void setData(List<Event> events){
         clear();

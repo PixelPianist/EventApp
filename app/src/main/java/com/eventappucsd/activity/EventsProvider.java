@@ -54,7 +54,6 @@ public class EventsProvider extends ContentProvider{
     /*
     onCreate will create the current DB
      */
-
     @Override
     public boolean onCreate() {
        //pass the current context to the DB
@@ -74,7 +73,6 @@ public class EventsProvider extends ContentProvider{
     /*
     getType will look to see if the Uri is a valid Uri
      */
-
     @Override
     public String getType(Uri uri) {
         final int match = sUriMatcher.match(uri);
@@ -91,8 +89,6 @@ public class EventsProvider extends ContentProvider{
     /*
     query method for querying the db
      */
-
-
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
@@ -124,8 +120,6 @@ public class EventsProvider extends ContentProvider{
     /*
     Insert Method
      */
-
-
     @Override
     public Uri insert(Uri uri, ContentValues values) {
 
@@ -145,7 +139,6 @@ public class EventsProvider extends ContentProvider{
     /*
     update method
      */
-
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         //output what we are trying to update
@@ -170,9 +163,8 @@ public class EventsProvider extends ContentProvider{
     }
 
     /*
-    delete Method
+    Delete Method
      */
-
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         Log.v(TAG, "delete(uri=" + uri);

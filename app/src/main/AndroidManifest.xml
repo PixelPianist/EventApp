@@ -25,8 +25,8 @@
         <activity android:name=".EnterEventInfoActivity" >
         </activity>
 
-        <!--<activity android:name=".ViewEventActivity" >-->
-        <!--</activity>-->
+        <activity android:name=".ViewEventActivity" >
+        </activity>
         <provider android:name=".EventsProvider"
             android:authorities="com.eventappucsd.activity.provider"
             android:exported="true"

@@ -2,6 +2,7 @@ package com.eventappucsd.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -12,7 +13,8 @@ import com.eventappucsd.backend.Event;
 /**
  * Created by Michael on 11/5/2015.
  */
-public class ViewEventActivity extends AppCompatActivity{
+public class ViewEventActivity extends FragmentActivity{
+
     protected void onCreate(Bundle savedInstanceState){
         // Magic android stuff
         super.onCreate(savedInstanceState);
