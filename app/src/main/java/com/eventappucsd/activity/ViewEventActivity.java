@@ -38,7 +38,7 @@ public class ViewEventActivity extends FragmentActivity {
         String eventLocation = intent.getStringExtra(EventsContract.EventsColumns.EVENTS_LOCATION);
 
         //set the textViews to the data from the EventsCustomAdapter class
-        nameTextView.setText(eventName);
+        nameTextView.setText("\n" + eventName + "\n");
         dateTextView.setText(eventDate);
         timeTextView.setText(eventTime);
         descriptionTextView.setText(eventDescription);

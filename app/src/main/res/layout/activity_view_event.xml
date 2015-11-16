@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="\nEvent Name\n"
+        android:textColor="@color/colorPrimary"
         android:id="@+id/viewEventName"
         android:layout_gravity="center_horizontal" />
 
