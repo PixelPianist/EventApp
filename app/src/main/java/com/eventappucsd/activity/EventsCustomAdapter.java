@@ -43,10 +43,13 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
             view = convertView;
         }
         final Event event = getItem(position);
-        //final int _id = event.getId();
+        final int _id = event.getId();
         final String name = event.getEventName();
         final String date = event.getDate();
+        final String time = event.getTime();
         final String location = event.getLocation();
+        final String description = event.getDescription();
+
 
         ((TextView) view.findViewById(R.id.event_name)).setText(name);
         ((TextView) view.findViewById(R.id.event_date)).setText(date);
@@ -58,9 +61,17 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO ViewActivity from the DB
+
+                //setting up the data needed to be made available by the ViewEventActivity.class
                 //Toast.makeText(getContext(), "click", Toast.LENGTH_SHORT).show();
                 Intent eventView = new Intent(getContext(), ViewEventActivity.class);
+                eventView.putExtra(EventsContract.EventsColumns.EVENTS_ID, String.valueOf(_id));
+                eventView.putExtra(EventsContract.EventsColumns.EVENTS_NAME, name);
+                eventView.putExtra(EventsContract.EventsColumns.EVENTS_DATE, date);
+                eventView.putExtra(EventsContract.EventsColumns.EVENTS_TIME, time);
+                eventView.putExtra(EventsContract.EventsColumns.EVENTS_LOCATION, location);
+                eventView.putExtra(EventsContract.EventsColumns.EVENTS_DESCRIPTION,description);
+
                 getContext().startActivity(eventView);
             }
         });

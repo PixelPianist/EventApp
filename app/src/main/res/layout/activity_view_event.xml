@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,7 +114,18 @@
             android:text="- Description: "
             android:textColor="#000000"
             android:paddingLeft="10dp"
-            android:id="@+id/viewEventDescription" />
+            android:id="@+id/descriptionTextView" />
+
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Event Description Here"
+        android:textColor="@color/colorPrimary"
+        android:paddingLeft="10dp"
+        android:id="@+id/viewEventDescription"
+        android:layout_weight="0.50" />
 
 </LinearLayout>

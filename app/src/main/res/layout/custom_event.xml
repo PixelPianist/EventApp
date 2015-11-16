@@ -8,7 +8,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:clickable="true">
+    android:clickable="true"
+    android:background="#FFFFFF"
+    android:divider="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -20,18 +22,21 @@
             android:id="@+id/event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
             android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/event_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
             android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/event_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
             android:textSize="15dp"/>
 
     </LinearLayout>

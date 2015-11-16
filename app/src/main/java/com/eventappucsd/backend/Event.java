@@ -28,7 +28,8 @@ public class Event{
     private String eventName;
     private String description;
     private String location; // is this the best way to do this?
-    private String date; //can be constructed with three ints - month, date, year
+    private String date;
+    //can be constructed with three ints - month, date, year
     //private Date date   TODO refactor date formatting
     private String time;
     private int numVotes;
