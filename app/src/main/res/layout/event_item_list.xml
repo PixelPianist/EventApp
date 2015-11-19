@@ -11,19 +11,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ImageButton android:id="@+id/upbtn"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:background="@drawable/peanut_btn_bw"
+    <ToggleButton android:id="@+id/upbtn"
+        android:layout_width="40dp"
+        android:layout_height="28dp"
+        android:background="@drawable/check"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:text="ABBB"
+        android:textOn=""
+        android:textOff=""
         android:clickable="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="false"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginBottom="3dp"
         android:cropToPadding="false" />
+
+    <TextView
+        android:id="@+id/event_numVotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="small text"
+        android:layout_below="@+id/upbtn"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:textSize="13dp"
+        />
 
 </RelativeLayout>

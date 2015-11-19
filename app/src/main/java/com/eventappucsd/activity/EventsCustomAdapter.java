@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.eventappucsd.backend.Date;
 import com.eventappucsd.backend.Event;
@@ -49,11 +50,12 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         final String time = event.getTime();
         final String location = event.getLocation();
         final String description = event.getDescription();
-
+        int numVotes = event.getNumVotes();  //TODO make it a
 
         ((TextView) view.findViewById(R.id.event_name)).setText(name);
         ((TextView) view.findViewById(R.id.event_date)).setText(date);
         ((TextView) view.findViewById(R.id.event_location)).setText(location);
+        ((TextView) view.findViewById(R.id.event_numVotes)).setText(numVotes + " Votes");
 
         /*
         make the event clickable and transition into the ViewActivity
@@ -75,6 +77,32 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
                 getContext().startActivity(eventView);
             }
         });
+
+        final ToggleButton upvoteButton = (ToggleButton) view.findViewById(R.id.upbtn);
+        // Needed in order to have both the button and the list item clickable
+        upvoteButton.setFocusable(false);
+        upvoteButton.setFocusableInTouchMode(false);
+        upvoteButton.setClickable(true);
+        upvoteButton.setTag(position);
+        upvoteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //TODO: How to get from the data base for which event is clicked?
+                    //Event event = FakeDB.getEvent((Integer) view.getTag()); // gets position stored
+                    //TODO: Make it so that one phone can only upvote an event once.
+
+                    // not voted yet
+                    if(upvoteButton.isChecked()) {
+                        Toast.makeText(getContext(), "Thank you for voting ", Toast.LENGTH_SHORT).show();
+                        //TODO: event.incrementNumVotes();
+                        //TODO: display the new vote;
+
+                    } else {
+
+                        //TODO: decrease vote
+                    }
+                }
+            });
 
         return view;
     }
