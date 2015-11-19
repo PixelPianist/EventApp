@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
             android:text="event name"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/event_date"

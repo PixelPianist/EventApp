@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When voted, use color -->
+    <item android:drawable="@drawable/peanut_btn"
+        android:state_checked="true" />
+    <!-- When not voted, use black & white-->
+    <item android:drawable="@drawable/peanut_btn_bw"
+        android:state_checked="false"/>
+
+</selector>
