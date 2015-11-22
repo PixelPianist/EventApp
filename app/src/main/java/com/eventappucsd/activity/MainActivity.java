@@ -2,20 +2,14 @@ package com.eventappucsd.activity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import com.eventappucsd.backend.EventsListFragment;
-import com.eventappucsd.backend.ID;
-
-import java.util.Collections;
 
 /**
  * Created by Scott on 11/13/15.
@@ -36,7 +30,6 @@ public class MainActivity extends FragmentActivity {
      * Instance Variables
      */
     private ContentResolver mContentResolver;
-    private String id;
 
     /*
     Fragment manager used for launching fragment activities.
@@ -52,7 +45,6 @@ public class MainActivity extends FragmentActivity {
             EventsListFragment eventsListFragment = new EventsListFragment();
             fragmentManager.beginTransaction().add(android.R.id.content, eventsListFragment).commit();
         }        System.out.println("MAIN ACTIVITY ONCREATE\n\n");
-        initializeID();
     }
 
     /*
@@ -104,10 +96,5 @@ public class MainActivity extends FragmentActivity {
     //Returns the current desired sorting scheme.
     public static int getSortType() {
         return globalSortSet;
-    }
-
-    // Gets the unique android ID
-    private void initializeID(){
-        id = ID.getID(getBaseContext(), getContentResolver());
     }
 }
