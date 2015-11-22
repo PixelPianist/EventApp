@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.eventappucsd.backend.EventsListFragment;
+import com.eventappucsd.backend.ID;
 
 import java.util.Collections;
 
@@ -21,12 +22,21 @@ import java.util.Collections;
  */
 public class MainActivity extends FragmentActivity {
 
+    /*
+     * Named Constants
+     */
     private static final int VOTE_SORT  = 1;
     private static final int DATE_SORT  = 2;
     private static final int ALPHA_SORT = 3;
+    /*
+     * Static Variables
+     */
     public static int globalSortSet     = VOTE_SORT;
-
+    /*
+     * Instance Variables
+     */
     private ContentResolver mContentResolver;
+    private String id;
 
     /*
     Fragment manager used for launching fragment activities.
@@ -42,6 +52,7 @@ public class MainActivity extends FragmentActivity {
             EventsListFragment eventsListFragment = new EventsListFragment();
             fragmentManager.beginTransaction().add(android.R.id.content, eventsListFragment).commit();
         }        System.out.println("MAIN ACTIVITY ONCREATE\n\n");
+        initializeID();
     }
 
     /*
@@ -93,5 +104,10 @@ public class MainActivity extends FragmentActivity {
     //Returns the current desired sorting scheme.
     public static int getSortType() {
         return globalSortSet;
+    }
+
+    // Gets the unique android ID
+    private void initializeID(){
+        id = ID.getID(getBaseContext(), getContentResolver());
     }
 }
