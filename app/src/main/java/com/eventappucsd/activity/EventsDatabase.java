@@ -44,6 +44,7 @@ public class EventsDatabase extends SQLiteOpenHelper {
         + EventsContract.EventsColumns.EVENTS_DATE + " TEXT NOT NULL,"
         + EventsContract.EventsColumns.EVENTS_TIME + " TEXT NOT NULL,"
         + EventsContract.EventsColumns.EVENTS_NUM_VOTES + " TEXT NOT NULL)");
+        System.out.println("EVENTSDBre ONCREATE\n\n");
     }
     /*
     OnUpgrade will handle if the DB is already setup

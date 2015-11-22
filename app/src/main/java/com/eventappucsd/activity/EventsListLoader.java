@@ -3,8 +3,10 @@ package com.eventappucsd.activity;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
@@ -19,6 +21,9 @@ import java.util.List;
  */
 public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
     private static final String LOG_TAG = EventsListLoader.class.getSimpleName();
+    private static final int VOTE_SORT  = 1;
+    private static final int DATE_SORT  = 2;
+
     private ContentResolver mContentResolver;
     private Cursor mCursor;
 
@@ -28,6 +33,7 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         super(context);
         mContentResolver = contentResolver;
     }
+
     @Override
     public List<Event> loadInBackground() {
         String[]projection = {
@@ -42,8 +48,22 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         //list of entries in the DB
         List<Event> entries = new ArrayList<Event>();
 
+        String sortType = "";
+
+        //Retrieve the current desired sorting scheme.
+        switch(MainActivity.getSortType()){
+            case VOTE_SORT:
+                sortType = EventsContract.EventsColumns.EVENTS_NUM_VOTES;
+                break;
+            case DATE_SORT:
+                sortType = EventsContract.EventsColumns.EVENTS_DATE;
+                break;
+            default:
+                sortType = EventsContract.EventsColumns.EVENTS_NAME;
+        }
+
         //initialize the cursor to the query of all the data from the DB
-        mCursor = mContentResolver.query(EventsContract.URI_TABLE, projection, null, null, null);
+        mCursor = mContentResolver.query(EventsContract.URI_TABLE, projection, null, null, sortType, null);
         if(mCursor != null){
             //loop through and retrieve all the records
             if(mCursor.moveToFirst()){
@@ -105,7 +125,7 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
 
     @Override
     protected void onReset() {
-        onStopLoading();;
+        onStopLoading();
         if(mCursor != null){
             mCursor.close();
         }

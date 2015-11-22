@@ -3,7 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
+    <item
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:id="@+id/sortByPopularity"
+        android:showAsAction="always"
+        android:orderInCategory="100"
+        android:title="Trend Sort"
+        tools:ignore="AppCompatResource"/>
 
+    <item
+        android:icon="@android:drawable/ic_menu_month"
+        android:id="@+id/sortByDate"
+        android:showAsAction="always"
+        android:orderInCategory="100"
+        android:title="Date Sort"
+        tools:ignore="AppCompatResource"/>
+
+    <item
+        android:icon="@android:drawable/ic_menu_sort_alphabetically"
+        android:id="@+id/sortByName"
+        android:showAsAction="always"
+        android:orderInCategory="100"
+        android:title="Name Sort"
+        tools:ignore="AppCompatResource"/>
     <item
         android:icon="@android:drawable/ic_menu_add"
         android:id="@+id/addRecord"
@@ -11,5 +33,6 @@
         android:orderInCategory="100"
         android:title="Add Record"
         tools:ignore="AppCompatResource"/>
+
 
 </menu>

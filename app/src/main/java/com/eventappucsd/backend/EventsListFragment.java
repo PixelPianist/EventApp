@@ -22,7 +22,7 @@ public class EventsListFragment extends ListFragment implements LoaderManager.Lo
     private EventsCustomAdapter mAdapter;
     private static final int LOADER_ID = 1;
     private ContentResolver mContentResolver;
-    private List<Event> mEvents;
+    public List<Event> mEvents;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
