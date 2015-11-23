@@ -25,7 +25,7 @@ public class MainActivity extends FragmentActivity {
     /*
      * Static Variables
      */
-    public static int globalSortSet     = VOTE_SORT;
+    public static int globalSortSet = VOTE_SORT;
     /*
      * Instance Variables
      */

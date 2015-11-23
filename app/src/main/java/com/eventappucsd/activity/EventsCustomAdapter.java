@@ -1,10 +1,15 @@
 package com.eventappucsd.activity;
 
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.LoaderManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +22,20 @@ import android.widget.ToggleButton;
 
 import com.eventappucsd.backend.Date;
 import com.eventappucsd.backend.Event;
+import com.eventappucsd.backend.EventsListFragment;
 
 import java.util.List;
 
 /**
  * Created by Scott on 11/13/15.
  */
-public class EventsCustomAdapter extends ArrayAdapter<Event> {
+public class EventsCustomAdapter extends ArrayAdapter<Event>  {
 
     private LayoutInflater mLayoutInflater;
     private static FragmentManager sFragmentManager;
+    private ContentResolver mContentResolver;
+    private final String LOG_TAG = EventsCustomAdapter.class.getSimpleName();
+    View view2;
 
     public EventsCustomAdapter(Context context, FragmentManager fragmentManager){
 
@@ -35,8 +44,8 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         sFragmentManager = fragmentManager;
     }
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final View view;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        View view;
         if(convertView == null) {
             //// TODO: 11/13/15 create custom layout
             view = mLayoutInflater.inflate(R.layout.custom_event, parent, false);
@@ -50,12 +59,15 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
         final String time = event.getTime();
         final String location = event.getLocation();
         final String description = event.getDescription();
-        int numVotes = event.getNumVotes();  //TODO make it a
+        final int numVotes = event.getNumVotes();  //TODO make it a
 
         ((TextView) view.findViewById(R.id.event_name)).setText(name);
         ((TextView) view.findViewById(R.id.event_date)).setText(date);
         ((TextView) view.findViewById(R.id.event_location)).setText(location);
         ((TextView) view.findViewById(R.id.event_numVotes)).setText(numVotes + " Votes");
+
+        //get the context so that the object called is not null for db updates
+        mContentResolver = getContext().getContentResolver();
 
         /*
         make the event clickable and transition into the ViewActivity
@@ -75,6 +87,7 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
                 eventView.putExtra(EventsContract.EventsColumns.EVENTS_DESCRIPTION,description);
 
                 getContext().startActivity(eventView);
+
             }
         });
 
@@ -95,10 +108,19 @@ public class EventsCustomAdapter extends ArrayAdapter<Event> {
                     if(upvoteButton.isChecked()) {
                         Toast.makeText(getContext(), "Thank you for voting ", Toast.LENGTH_SHORT).show();
                         //TODO: event.incrementNumVotes();
+                        int newVotes = numVotes;
+                        ++newVotes;
+
+                        ContentValues values = new ContentValues();
+                        values.put(EventsContract.EventsColumns.EVENTS_NUM_VOTES, String.valueOf(newVotes));
+                        Uri uri = EventsContract.Events.buildEventUri(String.valueOf(_id));
+                        int recordsUpdated = mContentResolver.update(uri, values, null, null);
+
+                        Log.d(LOG_TAG, "number of records updated = " + recordsUpdated + "newVotes: " + newVotes);
+
                         //TODO: display the new vote;
 
                     } else {
-
                         //TODO: decrease vote
                     }
                 }
