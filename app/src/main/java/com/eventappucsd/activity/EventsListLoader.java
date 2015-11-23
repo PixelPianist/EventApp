@@ -53,10 +53,10 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         //Retrieve the current desired sorting scheme.
         switch(MainActivity.getSortType()){
             case VOTE_SORT:
-                sortType = EventsContract.EventsColumns.EVENTS_NUM_VOTES;
+                sortType = EventsContract.EventsColumns.EVENTS_NUM_VOTES + " DESC";
                 break;
             case DATE_SORT:
-                sortType = EventsContract.EventsColumns.EVENTS_DATE;
+                sortType = EventsContract.EventsColumns.EVENTS_DATE + " DESC";
                 break;
             default:
                 sortType = EventsContract.EventsColumns.EVENTS_NAME;
