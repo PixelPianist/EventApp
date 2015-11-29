@@ -30,7 +30,7 @@ public class TimeSetter implements View.OnFocusChangeListener, TimePickerDialog.
         if(hasFocus){
             int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
             int minute = myCalendar.get(Calendar.MINUTE);
-            new TimePickerDialog(ctx, this, hour, minute, true).show();
+            new TimePickerDialog(ctx, this, hour, minute, false).show();
         }
     }
 
