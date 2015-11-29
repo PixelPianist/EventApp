@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.eventappucsd.backend.DateSetter;
+import com.eventappucsd.backend.TimeSetter;
 
 
 public class EnterEventInfoActivity extends FragmentActivity {
@@ -32,6 +33,8 @@ public class EnterEventInfoActivity extends FragmentActivity {
         editTextTime = (EditText) findViewById(R.id.editTextTime);
         editTextDate = (EditText) findViewById(R.id.editTextDate);
         DateSetter fromDate = new DateSetter(editTextDate, this);
+        TimeSetter fromTIme = new TimeSetter(editTextTime, this);
+
 
         mContentResolver = EnterEventInfoActivity.this.getContentResolver();
 
