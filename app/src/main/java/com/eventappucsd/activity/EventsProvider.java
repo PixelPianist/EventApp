@@ -39,7 +39,6 @@ public class EventsProvider extends ContentProvider{
     //events_id is for a single event
     private static final int EVENTS_ID = 101;
 
-
     /*
     UriMatcher will define the list of valid actions for our contentProvider
      */

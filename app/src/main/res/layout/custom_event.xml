@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/individual_event"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="right"
     android:paddingLeft="8dp"
-    android:clickable="true"
     android:background="#FFFFFF"
     android:divider="@color/colorPrimary"
     android:paddingTop="5dp"
@@ -44,13 +44,13 @@
             android:text="event location"
             android:textSize="15dp"
             android:paddingTop="1dp" />
-
     </LinearLayout>
-
     <RelativeLayout
         android:layout_width="80dp"
         android:layout_height="70dp">
-        <ToggleButton android:id="@+id/upbtn"
+        <ToggleButton
+            android:id="@+id/upbtn"
+            android:clickable="true"
             android:layout_width="46dp"
             android:layout_height="32dp"
             android:background="@drawable/check"
@@ -58,9 +58,9 @@
             android:focusableInTouchMode="false"
             android:textOn=""
             android:textOff=""
-            android:clickable="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:checked="false" />
 
         <TextView
             android:id="@+id/event_numVotes"
