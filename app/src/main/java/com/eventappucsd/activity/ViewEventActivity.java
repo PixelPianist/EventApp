@@ -8,7 +8,11 @@ import android.widget.TextView;
 
 
 /**
- * Created by Michael on 11/5/2015.
+ * The activity to view events.
+ *
+ * @author Michael
+ * @date 11/5/2015
+ * @version v1.0
  */
 public class ViewEventActivity extends FragmentActivity {
 
@@ -16,6 +20,11 @@ public class ViewEventActivity extends FragmentActivity {
     //only needed for querying the DB
     private ContentResolver mContentResolver;
 
+    /**
+     * This method is called on the creation of this event
+     *
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         // Magic android stuff
         super.onCreate(savedInstanceState);

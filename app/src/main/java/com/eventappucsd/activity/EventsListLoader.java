@@ -17,23 +17,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Scott on 11/13/15.
+ * A class used in loading a list of events
+ *
+ * @author Scott Miller
+ * @date 11/13/15.
+ * @version v1.0
  */
 public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
+    /*
+     * Named Constants
+     */
     private static final String LOG_TAG = EventsListLoader.class.getSimpleName();
     private static final int VOTE_SORT  = 1;
     private static final int DATE_SORT  = 2;
 
+    /*
+     * Instance vars
+     */
     private ContentResolver mContentResolver;
     private Cursor mCursor;
-
+    // The actual list
     private List<Event> mEvents;
-    //EventsListLoader Constructor
+
+    /**
+     * EventsListLoader Constructor taking a context, uri, and contentResolver
+     *
+     * @param context
+     * @param uri
+     * @param contentResolver
+     */
     public EventsListLoader(Context context, Uri uri, ContentResolver contentResolver){
         super(context);
         mContentResolver = contentResolver;
     }
 
+    /**
+     * Loads the list of events and returns it.
+     *
+     * @return A populated list of events (if it exists)
+     */
     @Override
     public List<Event> loadInBackground() {
         String[]projection = {
@@ -83,6 +105,11 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         return entries;
     }
 
+    /**
+     * Called in onStartLoading to deliver events in parent class.
+     *
+     * @param events A loaded list of events
+     */
     @Override
     public void deliverResult(List<Event> events) {
         //while we were processing, we want to stop, close, and let the new process continue
@@ -108,6 +135,9 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         }
     }
 
+    /**
+     * Calls different loading methods depending on the situation
+     */
     @Override
     protected void onStartLoading() {
         if(mEvents != null){
@@ -118,11 +148,17 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         }
     }
 
+    /**
+     * Delegation method for cancelLoad
+     */
     @Override
     protected void onStopLoading() {
         cancelLoad();
     }
 
+    /**
+     * Called on reset
+     */
     @Override
     protected void onReset() {
         onStopLoading();
@@ -132,6 +168,11 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         mEvents = null;
     }
 
+    /**
+     * Called when cancelled
+     *
+     * @param events
+     */
     @Override
     public void onCanceled(List<Event> events) {
         super.onCanceled(events);
@@ -140,6 +181,9 @@ public class EventsListLoader extends AsyncTaskLoader<List<Event>> {
         }
     }
 
+    /**
+     * Delegation for forcing loads using super.forceLoad
+     */
     @Override
     public void forceLoad() {
         super.forceLoad();

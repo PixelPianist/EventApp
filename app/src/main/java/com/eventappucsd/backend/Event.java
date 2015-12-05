@@ -43,6 +43,17 @@ public class Event{
 //        this.time = "";
 //    }
 
+    /**
+     * Constructor filling instance vars of event.
+     *
+     * @param _id
+     * @param eventName
+     * @param description
+     * @param location
+     * @param date
+     * @param time
+     * @param numVotes
+     */
     public Event(int _id, String eventName, String description, String location,
                  String date, String time, int numVotes){
         this._id = _id;
@@ -55,6 +66,10 @@ public class Event{
         this.numVotes = numVotes;
 
     }
+
+    /**********************
+     * Getters and Setters
+     **********************/
     public void setId(int _id){ this._id = _id; }
 
     public void setEventName(String eventName) {

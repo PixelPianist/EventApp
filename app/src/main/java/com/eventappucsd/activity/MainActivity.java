@@ -12,29 +12,34 @@ import android.view.MenuItem;
 import com.eventappucsd.backend.EventsListFragment;
 
 /**
- * Created by Scott on 11/13/15.
+ * @author Scott Miller
+ * @date 11/13/15
+ * @version v1.0
  */
 public class MainActivity extends FragmentActivity {
-
     /*
      * Named Constants
      */
     private static final int VOTE_SORT  = 1;
     private static final int DATE_SORT  = 2;
     private static final int ALPHA_SORT = 3;
+
     /*
      * Static Variables
      */
     public static int globalSortSet = VOTE_SORT;
+
     /*
      * Instance Variables
      */
     private ContentResolver mContentResolver;
 
-    /*
-    Fragment manager used for launching fragment activities.
-    Use this for launching new fragments
-    TODO viewEvent, peanutButton
+    /**
+     * Fragment manager used for launching fragment activities.
+     * Use this for launching new fragments
+     *
+     * @since v1.0
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,12 @@ public class MainActivity extends FragmentActivity {
         }        System.out.println("MAIN ACTIVITY ONCREATE\n\n");
     }
 
-    /*
-    launch the menu layout menu_main
+    /**
+     * Launch the menu layout menu_main
+     *
+     * @since v1.0
+     * @param menu
+     * @return
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,9 +66,12 @@ public class MainActivity extends FragmentActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /*
-    adding the event button is implemented from here, implement other
-    option buttons from here.
+    /**
+     * adding the event button is implemented from here, implement other
+     * option buttons from here.
+     *
+     * @param item
+     * @return
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

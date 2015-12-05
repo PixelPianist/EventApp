@@ -9,14 +9,24 @@ import android.widget.TimePicker;
 import java.util.Calendar;
 
 /**
- * Created by Rachel on 11/29/2015.
+ * @author Rachel
+ * @date 11/29/2015
+ * @version v1.0
  */
 public class TimeSetter implements View.OnFocusChangeListener, TimePickerDialog.OnTimeSetListener {
-
+    /*
+     * Instance Vars
+     */
     private EditText editText;
     private Calendar myCalendar;
     private Context ctx;
 
+    /**
+     * Constructor taking an EditText field and a Context
+     *
+     * @param editText
+     * @param ctx
+     */
     public TimeSetter(EditText editText, Context ctx){
         this.editText = editText;
         this.editText.setOnFocusChangeListener(this);
@@ -24,6 +34,13 @@ public class TimeSetter implements View.OnFocusChangeListener, TimePickerDialog.
         this.ctx = ctx;
     }
 
+    /**
+     * Called when the focus changes.
+     *
+     * @since v1.0
+     * @param v
+     * @param hasFocus
+     */
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         // TODO Auto-generated method stub
@@ -34,6 +51,14 @@ public class TimeSetter implements View.OnFocusChangeListener, TimePickerDialog.
         }
     }
 
+    /**
+     * Called when the time is set
+     *
+     * @since v1.0
+     * @param view
+     * @param hourOfDay
+     * @param minute
+     */
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         // TODO Auto-generated method stub

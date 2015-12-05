@@ -22,25 +22,51 @@ import com.eventappucsd.backend.Event;
 import java.util.List;
 
 /**
- * Created by Scott on 11/13/15.
+ * @author Scott Miller
+ * @date 11/13/15.
+ * @version v1.0
  */
 public class EventsCustomAdapter extends ArrayAdapter<Event>   {
-
-    private LayoutInflater mLayoutInflater;
-    private static FragmentManager sFragmentManager;
-    private ContentResolver mContentResolver;
-    private Context mContext;
+    /*
+     * Named Constants
+     */
     private final String LOG_TAG = EventsCustomAdapter.class.getSimpleName();
 
+    /*
+     * Static Vars
+     */
+    private static FragmentManager sFragmentManager;
 
+    /*
+     * Instance Vars
+     */
+    private LayoutInflater mLayoutInflater;
+    private ContentResolver mContentResolver;
+    private Context mContext;
+
+    /**
+     * Constructor taking a context and a fragment manager.
+     *
+     * @param context
+     * @param fragmentManager
+     */
     public EventsCustomAdapter(Context context, FragmentManager fragmentManager){
-
         super(context, android.R.layout.simple_list_item_2);
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         sFragmentManager = fragmentManager;
     }
+
+    /**
+     *
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
+        // Get the view
         final View view;
         if(convertView == null) {
             //custom event layout
@@ -49,6 +75,8 @@ public class EventsCustomAdapter extends ArrayAdapter<Event>   {
         } else {
             view = convertView;
         }
+        // Get all the fields from the event that is acquired by its position in
+        // the ArrayAdapter
         final Event event = getItem(position);
         final int _id = event.getId();
         final String name = event.getEventName();
@@ -57,7 +85,7 @@ public class EventsCustomAdapter extends ArrayAdapter<Event>   {
         final String location = event.getLocation();
         final String description = event.getDescription();
         final int numVotes = event.getNumVotes();
-
+        // Populate some graphics
         ((TextView) view.findViewById(R.id.event_name)).setText(name);
         ((TextView) view.findViewById(R.id.event_date)).setText(date);
         ((TextView) view.findViewById(R.id.event_location)).setText(location);
@@ -106,6 +134,9 @@ public class EventsCustomAdapter extends ArrayAdapter<Event>   {
             }
         });
 
+        /*
+         * Sets a listener for the list item being clicked,
+         */
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,8 +159,16 @@ public class EventsCustomAdapter extends ArrayAdapter<Event>   {
         });
         return view;
     }
+
+    /**
+     * Takes in a list of events and populates the Adapter with those events
+     *
+     * @param events
+     */
     public void setData(List<Event> events){
+        // Clear any events left over
         clear();
+        // Add all the events from the events list parameter.
         if(events != null){
             for(Event event : events){
                 add(event);

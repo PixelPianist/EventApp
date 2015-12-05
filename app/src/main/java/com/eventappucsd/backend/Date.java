@@ -4,19 +4,36 @@ import java.io.Serializable;
 import java.util.regex.Pattern;
 
 /**
- * Created by Rachel on 10/28/2015.
+ * A class for holding the date of an event
+ *
+ * @author Rachel
+ * @date 10/28/2015
+ * @version v1.0
  */
 public class Date {
+    /*
+     * Instance Vars
+     */
     private int year;
     private int month;
     private int day;
 
+    /**
+     * Constructor taking a month, day, and year
+     *
+     * @param month
+     * @param day
+     * @param year
+     */
     public Date(int month, int day, int year) {
         this.month = month;
         this.day = day;
         this.year = year;
     }
 
+    /**
+     * Default Constructor
+     */
     public Date() {
         this.month = -1;
         this.day = -1;

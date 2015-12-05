@@ -4,9 +4,16 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * Created by Scott on 11/10/15.
+ *
+ *
+ * @author Scott Miller
+ * @version v1.0
  */
 public class EventsContract {
+    /**
+     * EventsColumns interface contains all the fields to what is in an event, each
+     * one being represented as a string.
+     */
     interface EventsColumns{
         String EVENTS_ID = "_id";
         String EVENTS_NAME = "events_name";

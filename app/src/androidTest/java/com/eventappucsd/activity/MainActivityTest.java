@@ -63,51 +63,64 @@ import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
- * Created by Pete on 12/2/15.
+ * Test to run adding an event and viewing it.
+ *
+ * @author Pete
+ * @date 12/2/15
+ * @version v1.0
  */
 public class MainActivityTest extends ActivityInstrumentationTestCase2 {
 
 
+    /**
+     * Default constructor
+     */
     public MainActivityTest() {
         super(MainActivity.class);
     }
 
+    /**
+     * Tests whether the activity is not null
+     */
     public void testActivityExists() {
         Activity activity = getActivity();
         assertNotNull(activity);
     }
 
+    /**
+     * Tests through a scenario of adding an event and
+     */
     public void testAddEvent() {
         Activity main = getActivity();
 
         //Start adding the event.
-//        onView(withId(R.id.addRecord)).perform(click());
-//
-//        onView(ViewMatchers.withId(R.id.editTextEventName)).perform(typeText("A Random Event"), closeSoftKeyboard());
-//
-//        onView(ViewMatchers.withId(R.id.editTextDate)).perform(click());
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2016, 1, 17));
-//        onView(withText("OK")).perform(click());
-//
-//        onView(ViewMatchers.withId(R.id.editTextTime)).perform(click());
-//        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(18, 00));
-//        onView(withText("OK")).perform(click());
-//
-//
-//        onView(ViewMatchers.withId(R.id.editTextDescription)).perform(typeText("A random event for testing purposes"), closeSoftKeyboard());
-//
-//        onView(ViewMatchers.withId(R.id.editTextLocation)).perform(typeText("UCSD"), closeSoftKeyboard());
-//
-//        onView(withId(R.id.addRecord)).perform(click());
-//        //Event added by thispoint.
-//
-//        //Test different sorts.
-//        onView(withId(R.id.sortByDate)).perform(click());
-//        onView(withId(R.id.sortByName)).perform(click());
-//        onView(withId(R.id.sortByPopularity)).perform(click());
+        onView(withId(R.id.addRecord)).perform(click());
+
+        onView(ViewMatchers.withId(R.id.editTextEventName)).perform(typeText("A Random Event"), closeSoftKeyboard());
+
+        onView(ViewMatchers.withId(R.id.editTextDate)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2016, 1, 17));
+        onView(withText("OK")).perform(click());
+
+        onView(ViewMatchers.withId(R.id.editTextTime)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(18, 00));
+        onView(withText("OK")).perform(click());
 
 
-        onData(ViewMatchers.withId(R.id.event_list)).atPosition(0).perform(click());
+        onView(ViewMatchers.withId(R.id.editTextDescription)).perform(typeText("A random event for testing purposes"), closeSoftKeyboard());
+
+        onView(ViewMatchers.withId(R.id.editTextLocation)).perform(typeText("UCSD"), closeSoftKeyboard());
+
+        onView(withId(R.id.addRecord)).perform(click());
+        //Event added by thispoint.
+
+        //Test different sorts.
+        onView(withId(R.id.sortByDate)).perform(click());
+        onView(withId(R.id.sortByName)).perform(click());
+        onView(withId(R.id.sortByPopularity)).perform(click());
+
+
+//        onData(ViewMatchers.withId(R.id.event_list)).atPosition(0).perform(click());
 
 
     }

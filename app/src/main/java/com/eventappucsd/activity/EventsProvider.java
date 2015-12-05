@@ -12,20 +12,25 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Created by Scott on 11/10/15.
+ * ContentProvider for the DB
+ * @author Scott Miller
+ * @date 11/10/15
+ * @version v1.0
  */
-
-/*
-ContentProvider for the DB
- */
-
 public class EventsProvider extends ContentProvider{
+    /*
+     * Named Constants
+     */
+    // Each command needs a unique number, Events is for multiple friends
+    private static final int EVENTS = 100;
+    // events_id is for a single event
+    private static final int EVENTS_ID = 101;
 
-    //need a copy of the DB
-    private EventsDatabase mOpenHelper;
+    /*
+     * Static vars
+     */
     //name of the provider class
     private static String TAG = EventsProvider.class.getSimpleName();
-
     /*This looks at the content provider string (Uri) and deciphers it to decide if it is valid and
     what to do if it is valid
     (A URI is a Uniform Resource Identifier
@@ -33,25 +38,33 @@ public class EventsProvider extends ContentProvider{
     private static final UriMatcher sUriMatcher = buildUriMatcher();
 
     /*
-    each command needs a unique number, Events is for multiple friends
+     * Instance Vars
      */
-    private static final int EVENTS = 100;
-    //events_id is for a single event
-    private static final int EVENTS_ID = 101;
+    //need a copy of the DB
+    private EventsDatabase mOpenHelper;
 
-    /*
-    UriMatcher will define the list of valid actions for our contentProvider
+    /**
+     * UriMatcher will define the list of valid actions for our contentProvider
+     *
+     * @since v1.0
+     * @return UriMatcher A UriMatcher that is built in this method
      */
     private static UriMatcher buildUriMatcher(){
+        // Get the UriMatcher
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = EventsContract.CONTENT_AUTHORITY;
+        // Add fields to UriMatcher
         matcher.addURI(authority, "events", EVENTS);
         matcher.addURI(authority, "events/*", EVENTS_ID);
+        // Return
         return matcher;
     }
 
-    /*
-    onCreate will create the current DB
+    /**
+     * onCreate will create the current DB
+     *
+     * @since v1.0
+     * @return boolean Always returns true
      */
     @Override
     public boolean onCreate() {
@@ -60,8 +73,8 @@ public class EventsProvider extends ContentProvider{
         return true;
     }
 
-    /*
-    Method for deleting the DB, and creating a new empty one
+    /**
+     * Method for deleting the DB, and creating a new empty one
      */
     private void deleteDatabase(){
         mOpenHelper.close();
@@ -69,12 +82,16 @@ public class EventsProvider extends ContentProvider{
         mOpenHelper = new EventsDatabase(getContext());
     }
 
-    /*
-    getType will look to see if the Uri is a valid Uri
+    /**
+     * getType will look to see if the Uri is a valid Uri
+     *
+     * @since v1.0
+     * @return String Either the Event's Type or Item Type
      */
     @Override
     public String getType(Uri uri) {
         final int match = sUriMatcher.match(uri);
+        // Determines which string to return
         switch (match){
             case EVENTS:
                 return EventsContract.Events.CONTENT_TYPE;
@@ -85,8 +102,16 @@ public class EventsProvider extends ContentProvider{
         }
     }
 
-    /*
-    query method for querying the db
+    /**
+     * query method for querying the db
+     *
+     * @since v1.0
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return A cursor that was queried
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
@@ -116,8 +141,12 @@ public class EventsProvider extends ContentProvider{
         return cursor;
     }
 
-    /*
-    Insert Method
+    /**
+     * Insert Method
+     *
+     * @param uri Uri to insert in
+     * @param values Values to insert
+     * @return Returns a Uri
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) {
@@ -135,8 +164,14 @@ public class EventsProvider extends ContentProvider{
         }
     }
 
-    /*
-    update method
+    /**
+     * Update method.
+     *
+     * @param uri
+     * @param values
+     * @param selection
+     * @param selectionArgs
+     * @return Returns int returned from db.update()
      */
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
@@ -161,8 +196,13 @@ public class EventsProvider extends ContentProvider{
         return db.update(EventsDatabase.Tables.EVENTS, values, selectionCriteria, selectionArgs);
     }
 
-    /*
-    Delete Method
+    /**
+     * Delete method.
+     *
+     * @param uri
+     * @param selection
+     * @param selectionArgs
+     * @return Returns the int returned from db.delete()
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
